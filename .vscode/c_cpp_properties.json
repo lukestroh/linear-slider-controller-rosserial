@@ -16,7 +16,7 @@
             "intelliSenseMode": "gcc-x64",
             "includePath": [
                 "C:\\Users\\lukes\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
-                "C:\\Users\\lukes\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\mega",
+                "C:\\Users\\lukes\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\leonardo",
                 "C:\\Users\\lukes\\Documents\\Arduino\\libraries\\Ethernet\\src",
                 "C:\\Users\\lukes\\Documents\\Arduino\\libraries\\AccelStepper\\src",
                 "C:\\Users\\lukes\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\libraries\\EEPROM\\src",
@@ -33,8 +33,12 @@
             "defines": [
                 "F_CPU=16000000L",
                 "ARDUINO=10819",
-                "ARDUINO_AVR_MEGA2560",
+                "ARDUINO_AVR_LEONARDO_ETH",
                 "ARDUINO_ARCH_AVR",
+                "USB_VID=0x2a03",
+                "USB_PID=0x8040",
+                "USB_MANUFACTURER=\"Unknown\"",
+                "USB_PRODUCT=\"Arduino Leonardo ETH\"",
                 "__DBL_MIN_EXP__=(-125)",
                 "__HQ_FBIT__=15",
                 "__cpp_attributes=200809",

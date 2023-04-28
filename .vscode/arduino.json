@@ -1,8 +1,6 @@
 {
-    "board": "arduino:avr:mega",
-    "configuration": "cpu=atmega2560",
+    "board": "arduino:avr:leonardoeth",
     "port": "COM19",
     "sketch": "linear_slider_controller.ino",
     "output": "../build"
-
 }
