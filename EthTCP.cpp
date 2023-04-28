@@ -12,8 +12,8 @@ Eth::Eth() {
 
 void Eth::__init__() {
     /* Set class variables */
-    server = IPAddress(169, 254, 235, 35);
-    local_port = 10002;
+    server = IPAddress(169, 254, 93, 234);
+    local_port = 11412;
     client = EthernetClient();  
 }
 
@@ -91,6 +91,6 @@ void Eth::read_data() {
     }
 }
 
-void Eth::send_data(int data) { 
+void Eth::send_data(char* data) { 
     client.println(data);
 }

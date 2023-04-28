@@ -23,9 +23,9 @@ class Eth {
     private:
         // Connection parameters
         uint8_t MAC[6] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-        uint8_t IP[4] = { 169, 254, 235, 101 };
-        uint8_t DNS[4] = { 169, 254, 235, 35 };
-        uint8_t GATEWAY[4] = { 169, 254, 235, 35 };
+        uint8_t IP[4] = { 169, 254, 93, 101 };
+        uint8_t DNS[4] = { 169, 254, 93, 234 };
+        uint8_t GATEWAY[4] = { 169, 254, 93, 234 };
         uint8_t SUBNET[4] = { 255, 255, 0, 0 };
 
         
@@ -50,7 +50,7 @@ class Eth {
         // Public Methods
         bool connect();
         void read_data();
-        void send_data(int data);
+        void send_data(char* data);
 
 };
 

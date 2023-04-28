@@ -18,7 +18,7 @@
 #include <EEPROM.h>
 #include <stdio.h>
 
-#define DEBUG 1
+#define DEBUG 0
 
  
 // Limit switch pins
@@ -36,7 +36,7 @@ int EEPROM_write_counter;
 int EEPROM_write_counter_addr;
 
 // Desired stepper position
-int stepper_target;
+float stepper_target;
 
 // Switches
 LimitSwitch ls0(limit_switch0);
@@ -89,10 +89,19 @@ void setup() {
     
 }
 
+
+
 void loop() {
     // reconnect if broken, and maintain DHCP lease
     _connected = eth0.connect();
 
+    // Convert float to char array for sending over TCP
+    char _buffer[13];
+    float f = 3.1415926;
+    dtostrf(f, 10, 10, _buffer);
+
+    eth0.send_data(_buffer);
+    
     if (_connected) {
         // Read ethernet data buffer
         eth0.read_data();
@@ -104,17 +113,18 @@ void loop() {
 #endif // DEBUG
 
             // convert char array to float
-            sscanf(eth0.receivedChars, "%d", &stepper_target);
+//            sscanf(eth0.receivedChars, "%f", &stepper_target);
+            stepper_target = atof(eth0.receivedChars);
 #if DEBUG
             Serial.print(F("stepper_target: "));
-            Serial.println(stepper_target);
+            Serial.println(stepper_target, 5); // digits of precision printed out
 #endif // DEBUG
             eth0.newData = false;
         }
 
         // Return current stepper position
         // Will need up update to physical dimensions???
-        eth0.send_data(stepper.currentPosition());
+//        eth0.send_data(stepper.currentPosition());
 
         // Detect interrupts  /////////////////// NOTE*********** does not stop stepper in loop, need to set another flag
         if (ls0.read_switch()) {

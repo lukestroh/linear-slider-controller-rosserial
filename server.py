@@ -2,8 +2,8 @@ import asyncio
 import sys
 
 # Change this for host computer
-HOST = '169.254.235.35'
-ARDUINO_PORT = 10002
+HOST = '169.254.97.225'
+ARDUINO_PORT = 11412
 
 
 async def handle_echo(reader, writer):
@@ -19,7 +19,7 @@ async def handle_echo(reader, writer):
             # writer.write(send_data.encode('utf-8'))
             # await writer.drain()
 
-            await asyncio.sleep(1)
+            # await asyncio.sleep(0.01)
             read_data = (await reader.read(1024)).decode('utf-8')
             addr = writer.get_extra_info('peername')
             print(f"{read_data} ----------- from {addr}".replace('\r','').replace('\n',''))
