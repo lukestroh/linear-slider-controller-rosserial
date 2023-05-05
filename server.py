@@ -22,7 +22,8 @@ async def handle_echo(reader, writer):
             # await asyncio.sleep(0.01)
             read_data = (await reader.read(1024)).decode('utf-8')
             addr = writer.get_extra_info('peername')
-            print(f"{read_data} ----------- from {addr}".replace('\r','').replace('\n',''))
+            if read_data:
+                print(f"{read_data} ----------- from {addr}".replace('\r','').replace('\n',''))
 
     except (KeyboardInterrupt, ConnectionResetError) as e:
         print("exit 1")

@@ -31,12 +31,16 @@ class Eth {
         
 
         // Server address, port, client
-        IPAddress server;
-        int local_port;
-        EthernetClient client;
+        IPAddress lan_server_ip;
+        const int lan_server_port;
+        const int local_server_port;
+        EthernetClient local_client;
+        EthernetServer local_server;
+        int num_clients {1};
+        EthernetClient lan_clients[1];
 
         // Private Methods
-        void __init__();
+    
 
     public:
         // Data buffer
@@ -48,9 +52,18 @@ class Eth {
         Eth();
 
         // Public Methods
-        bool connect();
+        void begin_ethernet();
+        void begin_server();
+        bool connect_local_client();
+
+        // Server
+        void accept_clients();
+        void remove_clients();
         void read_data();
+
+        // Client
         void send_data(char* data);
+        void send_data(float f);
 
 };
 
