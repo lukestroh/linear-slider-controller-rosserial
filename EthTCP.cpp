@@ -8,7 +8,7 @@
 
 Eth::Eth():
     /* Initialize class variables */
-    lan_server_ip(169, 254, 97, 225),
+    lan_server_ip(169, 254, 93, 234),
     lan_server_port {11412},
     local_server_port {10002},
     local_client(),

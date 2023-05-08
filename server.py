@@ -2,7 +2,7 @@ import asyncio
 import sys
 
 # Change this for host computer
-HOST = '169.254.97.225'
+HOST = '169.254.93.234'
 ARDUINO_PORT = 11412
 
 

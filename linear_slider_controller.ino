@@ -12,7 +12,7 @@
  * 
  */
 
-#define DEBUG 1
+#define DEBUG 0
 
 #include "limitswitch.h"
 #include "EthTCP.h"
@@ -81,10 +81,9 @@ void calibrate_stepper() {
 ********************************************/
 
 void setup() {
-    #if DEBUG
-        Serial.begin(115200);
-        while (!Serial){;}
-    #endif // DEBUG
+    Serial.begin(115200);
+    while (!Serial){;}
+
 
     // Ethernet connections
     eth0.begin_ethernet();
@@ -120,16 +119,16 @@ void loop() {
     
     /* Update stepper target or run calibration if newData */
     if (eth0.newData) {
-        #if DEBUG
-            Serial.print(F("Received command: "));
-            Serial.println(eth0.receivedChars);
-        #endif // DEBUG
+#if DEBUG
+        Serial.print(F("Received command: "));
+        Serial.println(eth0.receivedChars);
+#endif // DEBUG
 
         stepper_target = atof(eth0.receivedChars);
-        #if DEBUG
-            Serial.print(F("stepper_target: "));
-            Serial.println(stepper_target, 5);
-        #endif // DEBUG
+#if DEBUG
+        Serial.print(F("stepper_target: "));
+        Serial.println(stepper_target, 5);
+#endif // DEBUG
 
         eth0.newData = false;
     }
